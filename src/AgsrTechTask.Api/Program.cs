@@ -1,21 +1,16 @@
-var builder = WebApplication.CreateBuilder(args);
+using AgsrTechTask.Api.Extensions;
+using FastEndpoints;
+using FastEndpoints.Swagger;
 
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+var builder = WebApplication.CreateBuilder(args);
+builder.Services
+    .AddDependencies();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
-app.MapControllers();
+app.UseFastEndpoints(config => config.Endpoints.RoutePrefix = "api")
+    .UseSwaggerGen();
 
 app.Run();
