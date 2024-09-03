@@ -1,0 +1,12 @@
+﻿services:
+  agsrtechtask.api:
+    image: agsrtechtask.api
+    build:
+      context: .
+      dockerfile: AgsrTechTask.Api/Dockerfile
+
+  agsrtechtask.dbinitializer:
+    image: agsrtechtask.dbinitializer
+    build:
+      context: .
+      dockerfile: AgsrTechTask.DbInitializer/Dockerfile
