@@ -3,7 +3,7 @@ using AgsrTechTask.Api.Dto.Responses;
 using AgsrTechTask.Api.Features.Patients.Commands.Create;
 using MediatR;
 
-namespace AgsrTechTask.Api.Endpoints.Patients.Post;
+namespace AgsrTechTask.Api.Endpoints.Patients.Post.Create;
 
 internal sealed class CreatePatientEndpoint : BaseEndpoint<CreatePatientRequest, PatientCreatedResponse>
 {
@@ -15,6 +15,7 @@ internal sealed class CreatePatientEndpoint : BaseEndpoint<CreatePatientRequest,
     {
         Post("/");
         Group<PatientEndpointsGroup>();
+        Summary(new CreatePatientEndpointSummary());
     }
 
     public override async Task HandleAsync(CreatePatientRequest req, CancellationToken ct)

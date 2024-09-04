@@ -3,7 +3,7 @@ using AgsrTechTask.Api.Dto.Responses;
 using AgsrTechTask.Api.Features.Patients.Queries.GetList;
 using MediatR;
 
-namespace AgsrTechTask.Api.Endpoints.Patients.Get;
+namespace AgsrTechTask.Api.Endpoints.Patients.Get.GetList;
 
 internal sealed class GetPatientListEndpoint : BaseEndpoint<GetPatientListRequest, PatientListResponse>
 {
@@ -15,6 +15,7 @@ internal sealed class GetPatientListEndpoint : BaseEndpoint<GetPatientListReques
     {
         Get("/list");
         Group<PatientEndpointsGroup>();
+        Summary(new GetPatientListEndpointSummary());
     }
 
     public override async Task HandleAsync(GetPatientListRequest req, CancellationToken ct)

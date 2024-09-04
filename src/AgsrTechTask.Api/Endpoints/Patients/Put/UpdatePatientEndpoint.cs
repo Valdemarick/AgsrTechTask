@@ -14,6 +14,7 @@ internal sealed class UpdatePatientEndpoint : BaseEndpoint<UpdatePatientRequest>
     {
         Put("/");
         Group<PatientEndpointsGroup>();
+        Summary(new UpdatePatientEndpointSummary());
     }
 
     public override async Task HandleAsync(UpdatePatientRequest req, CancellationToken ct)
