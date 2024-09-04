@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgsrTechTask.DbInitializer"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgsrTechTask.Domain", "AgsrTechTask.Domain\AgsrTechTask.Domain.csproj", "{B8C45978-F7E2-4BFD-8884-878673125126}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgsrTechTask.Dal", "AgsrTechTask.Dal\AgsrTechTask.Dal.csproj", "{D9550A82-96C4-4EE6-B2A0-24D85D210957}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,5 +37,9 @@ Global
 		{B8C45978-F7E2-4BFD-8884-878673125126}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8C45978-F7E2-4BFD-8884-878673125126}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8C45978-F7E2-4BFD-8884-878673125126}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9550A82-96C4-4EE6-B2A0-24D85D210957}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9550A82-96C4-4EE6-B2A0-24D85D210957}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9550A82-96C4-4EE6-B2A0-24D85D210957}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9550A82-96C4-4EE6-B2A0-24D85D210957}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

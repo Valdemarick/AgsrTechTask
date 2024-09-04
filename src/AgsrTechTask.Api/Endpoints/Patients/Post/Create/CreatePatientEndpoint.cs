@@ -20,7 +20,7 @@ internal sealed class CreatePatientEndpoint : BaseEndpoint<CreatePatientRequest,
 
     public override async Task HandleAsync(CreatePatientRequest req, CancellationToken ct)
     {
-        var command = new CreatePatientCommand();
+        var command = new CreatePatientCommand(req);
         var response = await Sender.Send(command, ct);
 
         await SendOkAsync(response, ct);

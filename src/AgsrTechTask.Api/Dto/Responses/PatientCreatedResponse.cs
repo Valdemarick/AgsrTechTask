@@ -1,3 +1,3 @@
 namespace AgsrTechTask.Api.Dto.Responses;
 
-public record PatientCreatedResponse();
+internal sealed record PatientCreatedResponse(Guid Id);

@@ -19,7 +19,7 @@ internal sealed class UpdatePatientEndpoint : BaseEndpoint<UpdatePatientRequest>
 
     public override async Task HandleAsync(UpdatePatientRequest req, CancellationToken ct)
     {
-        var command = new UpdatePatientCommand();
+        var command = new UpdatePatientCommand(req);
         await Sender.Send(command, ct);
 
         await SendNoContentAsync(ct);

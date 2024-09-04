@@ -5,9 +5,9 @@ using FluentValidation.AspNetCore;
 
 namespace AgsrTechTask.Api.Extensions;
 
-internal static class ServiceCollectionExtensions
+internal static class DependencyInjection
 {
-    internal static IServiceCollection AddDependencies(this IServiceCollection services)
+    internal static IServiceCollection AddApplication(this IServiceCollection services)
     {
         return AddFastEndpoints(services)
             .AddMediatr()

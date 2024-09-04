@@ -24,6 +24,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\AgsrTechTask.Dal\AgsrTechTask.Dal.csproj" />
       <ProjectReference Include="..\AgsrTechTask.Domain\AgsrTechTask.Domain.csproj" />
     </ItemGroup>
 

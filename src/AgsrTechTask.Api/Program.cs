@@ -1,10 +1,12 @@
 using AgsrTechTask.Api.Extensions;
+using AgsrTechTask.Dal;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services
-    .AddDependencies();
+    .AddApplication()
+    .AddDal(builder.Configuration);
 
 var app = builder.Build();
 
