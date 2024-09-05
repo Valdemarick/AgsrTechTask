@@ -4,7 +4,7 @@ public sealed class Patient
 {
     public Patient(
         string lastName,
-        DateTime birthDate,
+        DateTimeOffset birthDate,
         string? firstName,
         string? patronymicName,
         PatientNameFormality? patientNameFormality,
@@ -15,7 +15,11 @@ public sealed class Patient
         Name = new PatientName(lastName, firstName, patronymicName, patientNameFormality);
         Gender = gender ?? Gender.Unknown;
         BirthDate = birthDate;
-        Active = active ?? true;
+        IsActive = active ?? true;
+    }
+
+    private Patient()
+    {
     }
     
     public Guid Id { get; private set; }
@@ -24,7 +28,7 @@ public sealed class Patient
     
     public Gender Gender { get; private set; }
 
-    public DateTime BirthDate { get; private set; }
+    public DateTimeOffset BirthDate { get; private set; }
 
-    public bool Active { get; private set; }
+    public bool IsActive { get; private set; }
 }

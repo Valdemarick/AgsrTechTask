@@ -11,6 +11,11 @@ public record PatientName
         LastName = lastName;
         FirstName = firstName;
         PatronymicName = patronymicName;
+        Formality = patientNameFormality;
+    }
+
+    private PatientName()
+    {
     }
 
     public string LastName { get; private set; } = string.Empty;

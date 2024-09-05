@@ -1,3 +1,4 @@
+using AgsrTechTask.Dal;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 using FluentValidation;
@@ -7,6 +8,15 @@ namespace AgsrTechTask.Api.Extensions;
 
 internal static class DependencyInjection
 {
+    public static IServiceCollection AddAllDependencies(
+        this IServiceCollection services,
+        IConfiguration configuration)
+    {
+        return services
+            .AddApplication()
+            .AddDal(configuration);
+    }
+    
     internal static IServiceCollection AddApplication(this IServiceCollection services)
     {
         return AddFastEndpoints(services)
