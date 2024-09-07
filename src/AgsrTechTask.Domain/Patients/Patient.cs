@@ -3,6 +3,7 @@ namespace AgsrTechTask.Domain.Patients;
 public sealed class Patient
 {
     public Patient(
+        Guid id,
         string lastName,
         DateTimeOffset birthDate,
         string? firstName,
@@ -11,7 +12,7 @@ public sealed class Patient
         Gender? gender,
         bool? active)
     {
-        Id = Guid.NewGuid();
+        Id = id;
         Name = new PatientName(lastName, firstName, patronymicName, patientNameFormality);
         Gender = gender ?? Gender.Unknown;
         BirthDate = birthDate;

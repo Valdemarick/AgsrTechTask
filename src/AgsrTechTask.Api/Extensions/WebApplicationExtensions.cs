@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 
@@ -9,7 +10,11 @@ public static class WebApplicationExtensions
     {
         app.UseHttpsRedirection();
 
-        app.UseFastEndpoints(config => config.Endpoints.RoutePrefix = "api")
+        app.UseFastEndpoints(config =>
+            {
+                config.Endpoints.RoutePrefix = "api";
+                config.Serializer.Options.Converters.Add(new JsonStringEnumConverter());
+            })
             .UseSwaggerGen();
 
         app.Run();

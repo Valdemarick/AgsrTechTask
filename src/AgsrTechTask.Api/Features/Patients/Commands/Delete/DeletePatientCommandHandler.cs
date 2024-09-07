@@ -1,4 +1,6 @@
 using AgsrTechTask.Api.Abstractions.Messaging;
+using AgsrTechTask.Api.Exceptions;
+using AgsrTechTask.Api.Extensions.Patients;
 using AgsrTechTask.Domain.Patients;
 using MediatR;
 
@@ -15,11 +17,7 @@ internal sealed class DeletePatientCommandHandler : ICommandHandler<DeletePatien
 
     public async Task Handle(DeletePatientCommand request, CancellationToken cancellationToken)
     {
-        var patient = await _patientRepository.GetByIdAsync(request.Id, false, cancellationToken);
-        if (patient is null)
-        {
-            // TODO: throw an exception;
-        }
+        var patient = await _patientRepository.GetByIdOrThrowAsync(request.Id);
         
         _patientRepository.Delete(patient!);
         await _patientRepository.SaveChangesAsync(cancellationToken);

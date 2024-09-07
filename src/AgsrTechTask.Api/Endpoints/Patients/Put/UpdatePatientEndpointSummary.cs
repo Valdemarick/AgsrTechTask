@@ -11,7 +11,7 @@ internal sealed class UpdatePatientEndpointSummary : Summary<UpdatePatientEndpoi
         Description = "Updates a patient if he exists, otherwise 404 will be occured";
         ExampleRequest = new UpdatePatientRequest
         {
-            Name = "John Wick 2",
+            // Name = "John Wick 2",
         };
         Responses[StatusCodes.Status200OK] = "The patient has been updated";
         Responses[StatusCodes.Status400BadRequest] = "Validation errors have been occured";

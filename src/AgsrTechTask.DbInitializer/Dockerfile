@@ -5,6 +5,8 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["AgsrTechTask.DbInitializer/AgsrTechTask.DbInitializer.csproj", "AgsrTechTask.DbInitializer/"]
+COPY ["AgsrTechTask.Dal/AgsrTechTask.Dal.csproj", "AgsrTechTask.Dal/"]
+COPY ["AgsrTechTask.Domain/AgsrTechTask.Domain.csproj", "AgsrTechTask.Domain/"]
 RUN dotnet restore "AgsrTechTask.DbInitializer/AgsrTechTask.DbInitializer.csproj"
 COPY . .
 WORKDIR "/src/AgsrTechTask.DbInitializer"

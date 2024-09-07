@@ -11,7 +11,7 @@ internal sealed class CreatePatientEndpointSummary : Summary<CreatePatientEndpoi
         Description = "Creates a new patient";
         ExampleRequest = new CreatePatientRequest
         {
-            Name = "John Wick",
+            // LastName = "John Wick",
         };
         Responses[StatusCodes.Status201Created] = "A new patient was created";
         Responses[StatusCodes.Status400BadRequest] = "Validation errors occured";

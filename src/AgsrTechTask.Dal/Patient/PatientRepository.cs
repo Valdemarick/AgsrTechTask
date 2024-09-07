@@ -14,6 +14,7 @@ internal sealed class PatientRepository : IPatientRepository
     
     public async Task<IEnumerable<Domain.Patients.Patient>> GetListAsync(CancellationToken cancellationToken = default)
     {
+        // TODO: date filtering
         return await _dbContext.Patients
             .AsNoTracking()
             .ToListAsync(cancellationToken);

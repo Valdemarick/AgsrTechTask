@@ -1,4 +1,5 @@
 using AgsrTechTask.Api.Abstractions.Messaging;
+using AgsrTechTask.Api.Exceptions;
 using AgsrTechTask.Api.Extensions.Patients;
 using AgsrTechTask.Domain.Patients;
 
@@ -15,12 +16,7 @@ internal sealed class UpdatePatientCommandHandler : ICommandHandler<UpdatePatien
 
     public async Task Handle(UpdatePatientCommand request, CancellationToken cancellationToken)
     {
-        // TODO: поиск по Id
-        var patient = await _patientRepository.GetByIdAsync(default, withTracking: true, cancellationToken);
-        if (patient is null)
-        {
-            // TODO: throw an exception
-        }
+        _ = await _patientRepository.GetByIdOrThrowAsync(request.Request.Name.Id, withTracking: true);
         
         _patientRepository.Update(request.Request.FromDto());
         await _patientRepository.SaveChangesAsync(cancellationToken);

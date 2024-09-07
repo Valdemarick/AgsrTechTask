@@ -7,7 +7,7 @@ internal abstract class BaseEndpoint<TRequest, TResponse> : Endpoint<TRequest, T
 {
     protected readonly ISender Sender;
 
-    public BaseEndpoint(ISender sender)
+    protected BaseEndpoint(ISender sender)
     {
         Sender = sender;
     }
@@ -17,7 +17,7 @@ internal abstract class BaseEndpoint<TRequest> : Endpoint<TRequest>
 {
     protected readonly ISender Sender;
 
-    public BaseEndpoint(ISender sender)
+    protected BaseEndpoint(ISender sender)
     {
         Sender = sender;
     }

@@ -7,6 +7,8 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["AgsrTechTask.Api/AgsrTechTask.Api.csproj", "AgsrTechTask.Api/"]
+COPY ["AgsrTechTask.Domain/AgsrTechTask.Domain.csproj", "AgsrTechTask.Domain/"]
+COPY ["AgsrTechTask.Dal/AgsrTechTask.Dal.csproj", "AgsrTechTask.Dal/"]
 RUN dotnet restore "AgsrTechTask.Api/AgsrTechTask.Api.csproj"
 COPY . .
 WORKDIR "/src/AgsrTechTask.Api"

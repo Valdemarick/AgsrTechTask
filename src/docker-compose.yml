@@ -1,12 +1,55 @@
 ﻿services:
   agsrtechtask.api:
     image: agsrtechtask.api
+    restart: always
     build:
       context: .
       dockerfile: AgsrTechTask.Api/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__Database=Server=agsrtechtask.db; Port=5432;
+        Database=agsr; User Id=postgres; Password=postgres; commandtimeout=0;Include Error Detail=true;
+    ports:
+      - "5008:80"
+    depends_on:
+      - agsrtechtask.db
+      - agsrtechtask.dbinitializer
+    networks:
+      - agsr
 
   agsrtechtask.dbinitializer:
     image: agsrtechtask.dbinitializer
+    restart: on-failure
     build:
       context: .
       dockerfile: AgsrTechTask.DbInitializer/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__Database=Server=agsrtechtask.db; Port=5432;
+        Database=agsr; Username=postgres; Password=postgres; commandtimeout=0;Include Error Detail=true;
+    depends_on:
+      agsrtechtask.db:
+        condition: service_healthy
+    networks:
+      - agsr
+      
+  agsrtechtask.db:
+    container_name: agsrtechtask.db
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: agsr
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - agsr
+
+networks:
+  agsr:
+    driver: bridge

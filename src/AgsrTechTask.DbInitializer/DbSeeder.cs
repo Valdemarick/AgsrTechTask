@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AgsrTechTask.DbInitializer;
 
-internal sealed class DbSeeder : IDisposable
+internal sealed class DbSeeder
 {
     private const int PatientAmount = 100;
     
@@ -14,14 +14,6 @@ internal sealed class DbSeeder : IDisposable
     public DbSeeder(ApplicationDbContext dbContext)
     {
         _dbContext = dbContext;
-    }
-    
-    public void Migrate()
-    {
-        if (_dbContext.Database.GetPendingMigrations().Any())
-        {
-            _dbContext.Database.Migrate();
-        }
     }
     
     public async Task InitializeAsync()
@@ -34,21 +26,25 @@ internal sealed class DbSeeder : IDisposable
 
         await _dbContext.SaveChangesAsync();
     }
+    
+    private void Migrate()
+    {
+        if (_dbContext.Database.GetPendingMigrations().Any())
+        {
+            _dbContext.Database.Migrate();
+        }
+    }
 
     private void SeedPatients()
     {
         _dbContext.AddRange(CreatePatientFaker().Generate(PatientAmount));
-    }
-    
-    public void Dispose()
-    {
-        _dbContext.Dispose();
     }
 
     private Faker<Patient> CreatePatientFaker()
     {
         return new Faker<Patient>()
             .CustomInstantiator(f => new Patient(
+                Guid.NewGuid(),
                 f.Name.LastName(),
                 f.Date.Past(80),
                 f.Name.FirstName(),
