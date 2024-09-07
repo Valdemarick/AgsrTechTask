@@ -1,8 +1,10 @@
+using AgsrTechTask.Api.Features.PipelineBehaviours;
 using AgsrTechTask.Dal;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using MediatR;
 
 namespace AgsrTechTask.Api.Extensions;
 
@@ -32,7 +34,8 @@ internal static class DependencyInjection
 
     private static IServiceCollection AddMediatr(this IServiceCollection services)
     {
-        return services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<Program>());
+        return services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<Program>())
+            .AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehaviour<,>));
     }
 
     private static IServiceCollection AddFluentValidation(this IServiceCollection services)
