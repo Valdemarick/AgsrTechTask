@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AgsrTechTask.Dal;
+namespace AgsrTechTask.Dal.Extensions;
 
 public static class DependencyInjection
 {

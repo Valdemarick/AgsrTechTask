@@ -11,7 +11,7 @@ internal sealed class GetPatientListEndpointSummary : Summary<GetPatientListEndp
         Description = "Gets a patient list";
         ExampleRequest = new GetPatientListRequest
         {
-            DateFilter = "filter",
+            BirthDate = "filter",
         };
         Responses[StatusCodes.Status200OK] = "Success";
         Responses[StatusCodes.Status400BadRequest] = "Validation errors occured";

@@ -16,7 +16,7 @@ internal sealed class GetListQueryHandler : IQueryHandler<GetListQuery, PatientL
     
     public async Task<PatientListResponse> Handle(GetListQuery request, CancellationToken cancellationToken)
     {
-        var patients = await _patientRepository.GetListAsync(cancellationToken);
+        var patients = await _patientRepository.GetListAsync(request.Request.BirthDate, cancellationToken);
 
         return patients.ToDtoList();
     }

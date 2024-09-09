@@ -2,8 +2,8 @@ namespace AgsrTechTask.Domain.Patients;
 
 public interface IPatientRepository
 {
-    Task<IEnumerable<Patient>> GetListAsync(CancellationToken cancellationToken = default);
-
+    Task<IEnumerable<Patient>> GetListAsync(string? dateFilter, CancellationToken cancellationToken = default);
+    
     Task<Patient?> GetByIdAsync(Guid id, bool withTracking = false, CancellationToken cancellationToken = default);
 
     void Add(Patient patient);

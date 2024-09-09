@@ -1,5 +1,6 @@
 using AgsrTechTask.Api.Features.PipelineBehaviours;
 using AgsrTechTask.Dal;
+using AgsrTechTask.Dal.Extensions;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 using FluentValidation;
