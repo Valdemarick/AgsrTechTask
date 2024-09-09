@@ -6,7 +6,7 @@ public static class StringExtensions
 {
     private static readonly PatientListFilter EmptyFilter = new() { Operation = ComparisonOperation.None };
     
-    public static PatientListFilter GetPatientListFilter(this string filter)
+    public static PatientListFilter GetPatientListFilter(this string? filter)
     {
         if (string.IsNullOrEmpty(filter))
         {

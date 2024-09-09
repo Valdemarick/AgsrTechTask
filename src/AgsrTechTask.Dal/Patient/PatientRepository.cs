@@ -17,7 +17,7 @@ internal sealed class PatientRepository : IPatientRepository
         string? dateFilter,
         CancellationToken cancellationToken = default)
     {
-        var filter = dateFilter?.GetPatientListFilter();
+        var filter = dateFilter.GetPatientListFilter();
         var query = _dbContext.Patients
             .AsNoTracking();
         query = GetFilteredQuery(query, filter!);

@@ -1,5 +1,6 @@
 ﻿services:
   agsrtechtask.api:
+    container_name: agsrtechtask.api
     image: agsrtechtask.api
     restart: always
     build:
@@ -18,6 +19,7 @@
       - agsr
 
   agsrtechtask.dbinitializer:
+    container_name: agsrtechtask.dbinitializer
     image: agsrtechtask.dbinitializer
     restart: on-failure
     build:

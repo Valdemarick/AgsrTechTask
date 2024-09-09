@@ -47,7 +47,7 @@ public static class WebApplicationExtensions
         context.Response.StatusCode = statusCode;
         return context.Response.WriteAsJsonAsync(new ProblemDetails
         {
-            Status = StatusCodes.Status404NotFound,
+            Status = statusCode,
             Detail = message,
         });
     }
